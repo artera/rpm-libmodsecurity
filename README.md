@@ -1,3 +1,0 @@
-# libmodsecurity
-
-The libmodsecurity package
