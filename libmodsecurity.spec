@@ -1,26 +1,26 @@
-%global extra_rel rc1
 
 Name: libmodsecurity
 Version: 3.0.0
-Release: 0.2.%{extra_rel}%{?dist}
+Release: 1%{?dist}
 Summary: A library that loads/interprets rules written in the ModSecurity SecRules 
 
 License: ASL 2.0
 URL: https://www.modsecurity.org/
 
-Source0: https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}-%{extra_rel}/modsecurity-v%{version}-%{extra_rel}.tar.gz
-Patch0: 0001-Fix-build-on-non-x86-arch.patch
+Source0: https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
 
 BuildRequires: gcc-c++
 BuildRequires: make
 BuildRequires: flex
 BuildRequires: bison 
 BuildRequires: git-core
+BuildRequires: ssdeep-devel
 BuildRequires: pkgconfig(libxml-2.0)
 BuildRequires: pkgconfig(yajl)
 BuildRequires: pkgconfig(libcurl)
 BuildRequires: pkgconfig(geoip)
 BuildRequires: pkgconfig(libpcre)
+BuildRequires: pkgconfig(lmdb)
 
 # libinjection is supposed to be bundled (same as with mod_security 2.x)
 # See: https://github.com/client9/libinjection#embedding
@@ -54,7 +54,7 @@ applications that use %{name}.
 
 
 %prep
-%autosetup -S git -n modsecurity-v%{version}-%{extra_rel}
+%autosetup -n modsecurity-v%{version}
 
 
 %build
@@ -89,6 +89,11 @@ applications that use %{name}.
 
 
 %changelog
+* Sun Jan 21 2018 Athmane Madjoudj <athmane@fedoraproject.org> - 3.0.0-1
+- Update to 3.0.0 final release
+- Drop upstreamed patch
+- Add some new BRs
+
 * Sun Oct 22 2017 Athmane Madjoudj <athmane@fedoraproject.org> - 3.0.0-0.2.rc1
 - Add a patch to fix the build on non-x86 arch
 
