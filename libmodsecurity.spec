@@ -1,8 +1,8 @@
 
 Name: libmodsecurity
-Version: 3.0.0
-Release: 2%{?dist}
-Summary: A library that loads/interprets rules written in the ModSecurity SecRules 
+Version: 3.0.2
+Release: 1%{?dist}
+Summary: A library that loads/interprets rules written in the ModSecurity SecRules
 
 License: ASL 2.0
 URL: https://www.modsecurity.org/
@@ -12,7 +12,7 @@ Source0: https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}
 BuildRequires: gcc-c++
 BuildRequires: make
 BuildRequires: flex
-BuildRequires: bison 
+BuildRequires: bison
 BuildRequires: git-core
 BuildRequires: ssdeep-devel
 BuildRequires: pkgconfig(libxml-2.0)
@@ -28,9 +28,9 @@ Provides: bundled(libinjection) = 3.9.2
 
 %description
 Libmodsecurity is one component of the ModSecurity v3 project.
-The library codebase serves as an interface to ModSecurity Connectors 
+The library codebase serves as an interface to ModSecurity Connectors
 taking in web traffic and applying traditional ModSecurity processing.
-In general, it provides the capability to load/interpret rules written 
+In general, it provides the capability to load/interpret rules written
 in the ModSecurity SecRules format and apply them to HTTP content provided
 by your application via Connectors.
 
@@ -89,6 +89,9 @@ applications that use %{name}.
 
 
 %changelog
+* Sat Apr 14 2018 Athmane Madjoudj <athmane@fedoraproject.org> - 3.0.2-1
+- Update to 3.0.2 (rhbz #1563219)
+
 * Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
@@ -104,7 +107,7 @@ applications that use %{name}.
 - Fix release tag
 
 * Wed Aug 30 2017 Athmane Madjoudj <athmane@fedoraproject.org> - 3.0.0-0.rc1
-- Update to RC1 
+- Update to RC1
 - Fix some spec issues
 
 * Mon Feb 22 2016 Athmane Madjoudj <athmane@fedoraproject.org> 3.0-0.git
