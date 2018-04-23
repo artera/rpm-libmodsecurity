@@ -58,7 +58,7 @@ applications that use %{name}.
 
 
 %build
-%configure --libdir=%{_libdir}
+%configure --libdir=%{_libdir} --with-lmdb
 %make_build
 
 
