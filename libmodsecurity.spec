@@ -1,7 +1,7 @@
 
 Name: libmodsecurity
 Version: 3.0.2
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: A library that loads/interprets rules written in the ModSecurity SecRules
 
 License: ASL 2.0
@@ -89,6 +89,9 @@ applications that use %{name}.
 
 
 %changelog
+* Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Sun Apr 29 2018 Athmane Madjoudj <athmane@fedoraproject.org> - 3.0.2-2
 - Rebuild after PR#1
 
