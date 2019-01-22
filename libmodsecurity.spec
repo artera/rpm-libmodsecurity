@@ -73,9 +73,7 @@ mkdir -p %{buildroot}%{_libdir}/pkgconfig
 sed s:@libdir@:%{_libdir}: <%{S:1} >%{buildroot}%{_libdir}/pkgconfig/modsecurity.pc
 
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 
 %files
