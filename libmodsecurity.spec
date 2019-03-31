@@ -9,9 +9,6 @@ URL: https://www.modsecurity.org/
 
 Source0: https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
 
-# Back-port of the pkg-config file expected in the 3.0.3 release
-Source1: modsecurity.pc
-
 BuildRequires: gcc-c++
 BuildRequires: make
 BuildRequires: flex
@@ -68,10 +65,6 @@ applications that use %{name}.
 %install
 %make_install
 
-# see Source1 above
-mkdir -p %{buildroot}%{_libdir}/pkgconfig
-sed s:@libdir@:%{_libdir}: <%{S:1} >%{buildroot}%{_libdir}/pkgconfig/modsecurity.pc
-
 
 %ldconfig_scriptlets
 
@@ -97,6 +90,7 @@ sed s:@libdir@:%{_libdir}: <%{S:1} >%{buildroot}%{_libdir}/pkgconfig/modsecurity
 %changelog
 * Sun Mar 31 2019 Athmane Madjoudj <athmane@fedoraproject.org> - 3.0.3-1
 - Update to 3.0.3 (rhbz #1672678)
+- Remove pkg-config bits since it's included in this release
 
 * Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.2-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
