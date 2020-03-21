@@ -1,14 +1,13 @@
 
 Name: libmodsecurity
-Version: 3.0.3
-Release: 6%{?dist}
+Version: 3.0.4
+Release: 1%{?dist}
 Summary: A library that loads/interprets rules written in the ModSecurity SecRules
 
 License: ASL 2.0
 URL: https://www.modsecurity.org/
 
 Source0: https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
-Patch0: ModSecurity_cookie_parsing_fix_303.patch
 
 BuildRequires: gcc-c++
 BuildRequires: make
@@ -89,6 +88,10 @@ applications that use %{name}.
 
 
 %changelog
+* Sat Mar 21 2020 Othman Madjoudj <athmane@fedoraproject.org> - 3.0.4-1
+- Update to 3.0.4
+- Drop the patch (included in this release)
+
 * Sat Mar 21 2020 Othman Madjoudj <athmane@fedoraproject.org> - 3.0.3-6
 - Fix DoS vulnerability (CVE-2019-19886, RHBZ #1801720 / #1801719)
 
