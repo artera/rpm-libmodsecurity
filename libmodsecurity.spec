@@ -58,6 +58,7 @@ applications that use %{name}.
 
 
 %build
+export CFLAGS="$CFLAGS -Wno-error=reorder"
 %configure --libdir=%{_libdir} --with-lmdb
 %make_build
 
@@ -140,4 +141,3 @@ applications that use %{name}.
 
 * Mon Feb 22 2016 Athmane Madjoudj <athmane@fedoraproject.org> 3.0-0.git
 - Initial release
-
