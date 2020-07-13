@@ -58,7 +58,7 @@ applications that use %{name}.
 
 
 %build
-export CFLAGS="$CFLAGS -Wno-error=reorder"
+export CFLAGS="$CFLAGS -Wno-error=reorder -fPIE"
 %configure --libdir=%{_libdir} --with-lmdb
 %make_build
 
