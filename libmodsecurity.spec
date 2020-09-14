@@ -1,13 +1,14 @@
 
 Name: libmodsecurity
 Version: 3.0.4
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: A library that loads/interprets rules written in the ModSecurity SecRules
 
 License: ASL 2.0
 URL: https://www.modsecurity.org/
 
 Source0: https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
+Patch0: cve-2020-15598.patch
 
 BuildRequires: gcc-c++
 BuildRequires: make
