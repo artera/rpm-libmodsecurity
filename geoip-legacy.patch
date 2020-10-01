@@ -1,0 +1,57 @@
+From 9d78228bf066bb24f89e36ea130c48d0ca7f719b Mon Sep 17 00:00:00 2001
+From: Andrei Belov <defanator@gmail.com>
+Date: Thu, 30 Jul 2020 18:20:01 +0300
+Subject: [PATCH] GeoIP: switch to GEOIP_MEMORY_CACHE from GEOIP_INDEX_CACHE
+
+Using GEOIP_INDEX_CACHE on some older versions of libGeoIP (e.g. 1.5.0
+which is the default version on CentOS 7) leads to "Error reading file"
+error while opening completely valid GeoIP.dat:
+
+    # cat test.c
+    #include <stdio.h>
+    #include "GeoIP.h"
+
+    int main(void) {
+      GeoIP *g;
+
+      g = GeoIP_open("/tmp/GeoIP.dat", GEOIP_INDEX_CACHE);
+
+      if (g == NULL) {
+        printf("error!\n");
+      }
+
+      GeoIP_delete(g);
+
+      exit(0);
+    }
+    # cc -lGeoIP -o test test.c
+    # ./test
+    Error reading file /tmp/GeoIP.dat
+    error!
+    # sed -i -e 's,GEOIP_INDEX_CACHE,GEOIP_MEMORY_CACHE,' test.c
+    # cc -lGeoIP -o test test.c
+    # ./test
+    # geoiplookup -f /tmp/GeoIP.dat -v 8.8.8.8
+    GeoIP Country Edition: GEO-106FREE 20180327 Build 1 Copyright (c) 2018 MaxMind Inc All Rights Reserved
+
+Also tested with recent GeoLite databases converted from new format
+into legacy format, distributed here:
+
+    https://mailfud.org/geoip-legacy/
+---
+ src/utils/geo_lookup.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/utils/geo_lookup.cc b/src/utils/geo_lookup.cc
+index e0801f835..00c4592a4 100644
+--- a/src/utils/geo_lookup.cc
++++ b/src/utils/geo_lookup.cc
+@@ -70,7 +70,7 @@ bool GeoLookup::setDataBase(const std::string& filePath,
+ 
+ #ifdef WITH_GEOIP
+     if (m_version == NOT_LOADED) {
+-        m_gi = GeoIP_open(filePath.c_str(), GEOIP_INDEX_CACHE);
++        m_gi = GeoIP_open(filePath.c_str(), GEOIP_MEMORY_CACHE);
+         if (m_gi == NULL) {
+             intGeo.append("GeoIP: Can't open: " + filePath + ".");
+         } else {
