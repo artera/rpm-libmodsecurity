@@ -1,16 +1,14 @@
 
 Name: libmodsecurity
-Version: 3.0.4
-Release: 3%{?dist}
+Version: 3.0.5
+Release: 1%{?dist}
 Summary: A library that loads/interprets rules written in the ModSecurity SecRules
 
 License: ASL 2.0
 URL: https://www.modsecurity.org/
 
 Source0: https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}/modsecurity-v%{version}.tar.gz
-Patch0: cve-2020-15598.patch
-Patch1: geoip-legacy.patch
-Patch2: lmdb-shared-collections-path.patch
+Patch1: lmdb-shared-collections-path.patch
 
 BuildRequires: gcc-c++
 BuildRequires: make
@@ -26,7 +24,7 @@ BuildRequires: pkgconfig(libpcre)
 BuildRequires: pkgconfig(lmdb)
 
 # libinjection is supposed to be bundled (same as with mod_security 2.x)
-# See: https://github.com/client9/libinjection#embedding
+# See: https://github.com/libinjection/libinjection#embedding
 Provides: bundled(libinjection) = 3.9.2
 
 %description
