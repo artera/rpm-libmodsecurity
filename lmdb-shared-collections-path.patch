@@ -1,13 +1,13 @@
 diff --git a/src/collection/backend/lmdb.cc b/src/collection/backend/lmdb.cc
-index 2ad25a2..dd5453f 100644
+index 1ffca80..62a502d 100644
 --- a/src/collection/backend/lmdb.cc
 +++ b/src/collection/backend/lmdb.cc
-@@ -38,7 +38,7 @@ namespace backend {
- LMDB::LMDB(std::string name) :
-     Collection(name), m_env(NULL) {
+@@ -510,7 +510,7 @@ MDBEnvProvider::MDBEnvProvider() : m_env(NULL), valid(false) {
+     int rc;
+     MDB_txn *txn;
      mdb_env_create(&m_env);
--    mdb_env_open(m_env, "./modsec-shared-collections",
-+    mdb_env_open(m_env, "/run/modsec-shared-collections",
+-    rc = mdb_env_open(m_env, "./modsec-shared-collections",
++    rc = mdb_env_open(m_env, "/run/modsec-shared-collections",
          MDB_WRITEMAP | MDB_NOSUBDIR, 0664);
- }
  
+     if (rc == 0) {

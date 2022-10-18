@@ -1,1 +1,9 @@
-/*.gz
+*.gz
+*.bz2
+*.zip
+*.tar
+*.bak
+*~
+*.spec
+output/
+target/

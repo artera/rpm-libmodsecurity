@@ -19,7 +19,7 @@ BuildRequires: ssdeep-devel
 BuildRequires: pkgconfig(libxml-2.0)
 BuildRequires: pkgconfig(yajl)
 BuildRequires: pkgconfig(libcurl)
-BuildRequires: pkgconfig(geoip)
+BuildRequires: pkgconfig(libmaxminddb)
 BuildRequires: pkgconfig(libpcre)
 BuildRequires: pkgconfig(lmdb)
 
