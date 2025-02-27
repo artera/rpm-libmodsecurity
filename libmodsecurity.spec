@@ -1,6 +1,6 @@
 
 Name: libmodsecurity
-Version: 3.0.11
+Version: 3.0.14
 Release: 1%{?dist}
 Summary: A library that loads/interprets rules written in the ModSecurity SecRules
 
